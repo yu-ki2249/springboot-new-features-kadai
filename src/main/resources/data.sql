@@ -99,4 +99,23 @@ INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_d
  INSERT IGNORE INTO reviews (id, house_id, user_id, score, content) VALUES (9, 1, 9, 4, '施設内の設備が充実していました。');
  INSERT IGNORE INTO reviews (id, house_id, user_id, score, content) VALUES (10, 1, 10, 5, 'Wi-Fiが快適で助かりました。');
  INSERT IGNORE INTO reviews (id, house_id, user_id, score, content) VALUES (11, 1, 11, 4, '清潔感があり、気持ちよく滞在できました。');
+
  INSERT IGNORE INTO reviews (id, house_id, user_id, score, content) VALUES (12, 1, 12, 5, '部屋が広く、ゆったり過ごせました。');
+ 
+ -- favoritesテーブル
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (1, 1, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (2, 2, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (3, 3, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (4, 4, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (5, 5, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (6, 6, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (7, 7, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (8, 8, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (9, 9, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (10, 10, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (11, 11, 1);
+ INSERT IGNORE INTO samuraitravel_db.favorites (id, house_id, user_id) VALUES (12, 12, 1);
+ 
+
+ INSERT IGNORE INTO reviews (id, house_id, user_id, score, content) VALUES (12, 1, 12, 5, '部屋が広く、ゆったり過ごせました。');
+

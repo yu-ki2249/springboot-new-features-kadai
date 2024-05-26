@@ -16,16 +16,31 @@
              <div th:replace="~{fragment :: header}"></div>
              
              <main>
-                 <div class="container pt-4 pb-5 samuraitravel-container">
-                     <div class="row justify-content-center">
-                         <div class="col-xxl-9 col-xl-10 col-lg-11">
-                             <nav class="mb-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                                 <ol class="breadcrumb mb-0">                        
-                                     <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
-                                     <li class="breadcrumb-item"><a th:href="@{/houses}">民宿一覧</a></li>
-                                     <li class="breadcrumb-item active" aria-current="page">民宿詳細</li>
-                                 </ol>
-                             </nav> 
+                <div class="container pt-4 pb-5 samuraitravel-container">
+                    <div class="row justify-content-center">
+                        <div class="col-xxl-9 col-xl-10 col-lg-11">
+                             <div class="d-flex justify-content-between mb-4">
+                                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                    <ol class="breadcrumb mb-0">                        
+                                        <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
+                                        <li class="breadcrumb-item"><a th:href="@{/houses}">民宿一覧</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">民宿詳細</li>
+                                    </ol>
+                                </nav> 
+
+
+                                 <!-- お気に入りセクション -->
+                                 <div sec:authorize="isAuthenticated()">
+                                     <div th:if="${isFavorite}">
+                                         <a href="#" onclick="event.preventDefault(); document.getElementById('favorite-form').submit();">&#9829; お気に入り解除</a>
+                                         <form method="post" th:action="@{/houses/__${house.getId()}__/favorites/__${favorite.getId()}__/delete}" id="favorite-form" class="d-none"></form>                                        
+                                     </div>
+                                     <div th:unless="${isFavorite}">
+                                         <a href="#" onclick="event.preventDefault(); document.getElementById('favorite-form').submit();">&#9825; お気に入り追加</a>
+                                         <form method="post" th:action="@{/houses/__${house.getId()}__/favorites/create}" id="favorite-form" class="d-none"></form>                                          
+                                     </div>
+                                 </div>                            
+                             </div>
                              
                              <h1 class="mb-4 text-center" th:text="${house.getName()}"></h1>   
                              
