@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS verification_tokens (
      FOREIGN KEY (user_id) REFERENCES users (id) 
  );
  
+
  CREATE TABLE IF NOT EXISTS samuraitravel_db.favorites (
      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
      house_id INT NOT NULL,
@@ -80,4 +81,7 @@ CREATE TABLE IF NOT EXISTS verification_tokens (
      FOREIGN KEY (house_id) REFERENCES houses (id),
      FOREIGN KEY (user_id) REFERENCES users (id)  
  );
+
+ 
+
 	
