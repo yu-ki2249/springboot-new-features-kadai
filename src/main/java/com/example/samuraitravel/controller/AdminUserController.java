@@ -18,33 +18,35 @@ import com.example.samuraitravel.repository.UserRepository;
 @RequestMapping("/admin/users")
 public class AdminUserController {
 	private final UserRepository userRepository;
-	
+
 	public AdminUserController(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
-	
+
 	@GetMapping
-	public String index(@RequestParam(name = "keyword", required = false) String keyword, @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable, Model model) {
+	public String index(@RequestParam(name = "keyword", required = false) String keyword,
+			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+			Model model) {
 		Page<User> userPage;
-		
-		if(keyword != null && !keyword.isEmpty()) {
+
+		if (keyword != null && !keyword.isEmpty()) {
 			userPage = userRepository.findByNameLikeOrFuriganaLike("%" + keyword + "%", "%" + keyword + "%", pageable);
 		} else {
 			userPage = userRepository.findAll(pageable);
 		}
-		
+
 		model.addAttribute("userPage", userPage);
 		model.addAttribute("keyword", keyword);
-		
+
 		return "admin/users/index";
- 	}
-	
+	}
+
 	@GetMapping("/{id}")
 	public String show(@PathVariable(name = "id") Integer id, Model model) {
 		User user = userRepository.getReferenceById(id);
-		
+
 		model.addAttribute("user", user);
-		
+
 		return "admin/users/show";
 	}
 }
